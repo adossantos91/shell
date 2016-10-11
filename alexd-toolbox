@@ -25,4 +25,3 @@ yank(){
 email(){
  exim -Mvb $1
 }
-
