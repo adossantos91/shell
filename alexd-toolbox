@@ -6,3 +6,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+
+yank(){
+lower = $1-$2;
+upper = $1+$2;
+ sed "$lower,$upper!d" $3
+}
