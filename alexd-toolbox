@@ -5,10 +5,24 @@
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias ll='ls -lah'
 
 
 yank(){
-lower = $1-$2;
-upper = $1+$2;
- sed "$lower,$upper!d" $3
+  # yank LINE FILE [SPAN]
+  
+  [ -z $3 ] && span=0 || span=$3; # Set span to 0 if not specified
+  
+  let lower=$1-$span;
+  [ $lower -lt 1 ] && lower=1; # Reset lower to 1 if it's less than 1
+  
+  let upper=$1+$span;
+  [ $upper -gt $(wc -l $2 | awk '{print $1}') ] && upper=$(wc -l $2 | awk '{print $1}'); # Reset upper to last line of file
+  
+  sed -n "${lower},${upper}p" $2
 }
+
+email(){
+ exim -Mvb $1
+}
+
