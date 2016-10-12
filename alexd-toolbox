@@ -22,6 +22,6 @@ yank(){
   sed -n "${lower},${upper}p" $2
 }
 
-email(){
+exiread(){
  exim -Mvb $1
 }
