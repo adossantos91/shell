@@ -1,13 +1,8 @@
- # custom .bashrc for my aliases
-
-# User specific aliases and functions
-
+#custom .bashrc for my aliases
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -lah'
-
-
 yank(){
   # yank LINE FILE [SPAN]
   
@@ -21,7 +16,6 @@ yank(){
   
   sed -n "${lower},${upper}p" $2
 }
-
 exiread(){
  exim -Mvb $1
 }
